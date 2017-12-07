@@ -1,6 +1,8 @@
-var stockPricesYesterday = [104, 27, 15, 12, 11, 9]
+var stockPricesYesterday = [1, 7, 5, 8, 11, 9]
 
 function getMaxProfit(stock_prices) {
+
+    // third iteration, interview cake solution
 
     var max_profit = 0;
 
@@ -8,37 +10,61 @@ function getMaxProfit(stock_prices) {
 
     for (var i = 0; i < stock_prices.length; i++) {
 
-        var sell_price = stock_prices[i+1];
+        var current_price = stock_prices[i]
 
-        var profit = sell_price - min_price;
+        min_price = Math.min(min_price, current_price)
 
-        if (profit > max_profit) {
+        var profit = current_price - min_price;
 
-            max_profit = profit
+        max_profit = Math.max(max_profit, profit)
 
-        }
+    };
 
-        if (sell_price < min_price) {
+    console.log(max_profit)
 
-            min_price = sell_price;
-
-
-        }
+    return max_profit
 
 
-    }
+    // second iteration
+    // var max_profit = 0;
 
-    if( max_profit  <= 0 )  {
+    // var min_price = stock_prices[0];
 
-        console.log('error, you are selling at a loss');
+    // for (var i = 0; i < stock_prices.length; i++) {
 
-        return false
+    //     var sell_price = stock_prices[i+1];
 
-    } else {
+    //     var profit = sell_price - min_price;
 
-        console.log(max_profit)
+    //     if (profit > max_profit) {
 
-    }
+    //         max_profit = profit
+
+    //     }
+
+    //     if (sell_price < min_price) {
+
+    //         min_price = sell_price;
+
+
+    //     }
+
+
+    // }
+
+    // if( max_profit  <= 0 )  {
+
+    //     console.log('error, you are selling at a loss');
+
+    //     return false
+
+    // } else {
+
+    //     console.log(max_profit)
+
+    // }
+
+    // --first iteration--
    //  for (var buy_index = 0; buy_index < stock_prices.length; buy_index++) {
 
    //      var buy_price = stock_prices[buy_index]
