@@ -1,18 +1,16 @@
-var stockPricesYesterday = [15, 1, 10, 7, 5, 8, 11, 15]
+var stockPricesYesterday = [16, 11, 8, 5, 2]
 
 function getMaxProfit(stock_prices) {
-
-    var reverse_stock_prices = stock_prices.reverse();
 
     var max_profit = 0;
 
     for (var buy_index = 0; buy_index < stock_prices.length; buy_index++) {
 
-        for (var sell_index = 0; sell_index < stock_prices.length; sell_index++) {
+        var buy_price = stock_prices[buy_index]
 
-            var buy_price = reverse_stock_prices[buy_index]
+        for (var sell_index = buy_index + 1; sell_index < stock_prices.length; sell_index++) {
 
-            var sell_price = reverse_stock_prices[sell_index]
+            var sell_price = stock_prices[sell_index]
 
             var profit = sell_price - buy_price
 
@@ -26,8 +24,17 @@ function getMaxProfit(stock_prices) {
 
     }
 
-    return max_profit
-    console.log(max_profit)
+   if (profit <= 0 ) {
+
+        console.log('dont sell!')
+
+    } else {
+
+        console.log(max_profit)
+
+        return max_profit
+
+    }
 
 }
 
